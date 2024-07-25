@@ -163,28 +163,28 @@ function drawTextLine(ctx, text, x, y, letterSpacing) {
         let xOffset = 0;
 
         if (isUpperVowel) {
-            yOffset = 1;
-            xOffset = -1;
+            yOffset = -1;
+            xOffset = 0;
         }
 
         if (isToneMark) {
             if (prevChar && ((prevChar.charCodeAt(0) >= 0x0E34 && prevChar.charCodeAt(0) <= 0x0E37) || prevChar.charCodeAt(0) === 0x0E31)) {
                 yOffset = -8; // วรรณยุกต์ที่มีสระ เลื่อนขึ้น 8 หน่วย
-                xOffset = -5; // เลื่อนในแนวนอน ซ้าย 5 หน่วย
+                xOffset = 0; // เลื่อนในแนวนอน ซ้าย 5 หน่วย
             } else {
-                yOffset = -0; // วรรณยุกต์ไม่มีสระ เลื่อนขึ้น 8 หน่วย
-                xOffset = -9; // เลื่อนในแนวนอน ซ้าย 5 หน่วย
+                yOffset = 0; // วรรณยุกต์ไม่มีสระ เลื่อนขึ้น 8 หน่วย
+                xOffset = -7; // เลื่อนในแนวนอน ซ้าย 5 หน่วย
             }
         }
 
         if (isBeforeVowel) {
-            yOffset = 0;
-            xOffset = -8;
+            yOffset = -1;
+            xOffset = 1;
         }
 
         if (isBelowVowel) {
             yOffset = 0;
-            xOffset = -4;
+            xOffset = -10;
         }
 
         ctx.fillText(char, currentPosition + xOffset, y + yOffset);
@@ -216,7 +216,7 @@ function drawBattery(ctx, batteryLevel, powerSavingMode) {
 // วาดการเติมแบตเตอรี่
 const fillWidth = (batteryLevel / 100) * 29.5; // คำนวณความกว้างของการเติมแบตเตอรี่ตามระดับแบตเตอรี่
 const x = 481.0;
-const y = 30.2;
+const y = 30.4;
 const height = 12.8;
 const radius = 4; // รัศมีของโค้ง
 
